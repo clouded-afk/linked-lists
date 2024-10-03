@@ -3,6 +3,7 @@ class LinkedList {
         this.head = null
     }
 
+    // Adds a new node containing value to the END of the list
     append(value) {
         const node = new Node(value)
 
@@ -17,6 +18,7 @@ class LinkedList {
         }
     }
 
+    // Adds a new node containing value to the START of the list
     prepend(value) {
         const node = new Node(value)
 
@@ -28,30 +30,50 @@ class LinkedList {
         }
     }
 
-    size() {
+    // Returns TOTAL number of nodes in the list
+    getSize() {
 
     }
 
-    tail() {
-
+    // Returns the FIRST node in the list
+    getHead() {
+        return this.head
     }
 
+    // Returns the LAST node in the list
+    getTail() {
+        if (this.head.nextNode === null) {
+            return this.head
+        } else {
+            let previous = this.head
+            while (previous.nextNode !== null) {
+                previous = previous.nextNode
+            }
+            return previous
+        }
+    }
+
+    // Returns the node at the given index
     at(index) {
 
     }
 
+    // Removes the last element from the list
     pop() {
 
     }
 
+    // Returns TRUE of the passed in value is in the list, otherwise returns FALSE
     contains(value) {
 
     }
 
+    // Returns the index of the node containing the passed in value, or null if not found
     find(value) {
 
     }
 
+    // Prints oyt the linked list in a readable format in the console
     toString() {
         if (this.head === null) {
             console.log("List is Empty")
@@ -68,10 +90,12 @@ class LinkedList {
 
     // Extra Credit
 
+    // Inserts a new node withe the provided value at the given index
     insertAt(value, index) {
 
     }
 
+    // Removes the node at the given index
     removeAt(index) {
 
     }
@@ -90,6 +114,10 @@ list.append("dog")
 list.append("cat")
 
 list.prepend("panda")
+list.append("squirrel")
 list.prepend("bear")
+list.prepend("elephant")
 
 list.toString()
+console.log(list.getTail())
+console.log(list.getHead())
