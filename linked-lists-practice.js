@@ -72,7 +72,19 @@ class LinkedList {
 
     // Returns the node at the given index
     at(index) {
+        if (!this.head) {
+            return `The List is Empty, The Index of ${index} does not exist`
+        }
+        let currentNode = this.head
+        let count = 0
 
+        while (currentNode) {
+            if (count === index) {
+                return currentNode
+            }
+            currentNode = currentNode.nextNode
+            count++
+        }
     }
 
     // Removes the last element from the list
@@ -125,6 +137,8 @@ class Node {
     }
 }
 
+
+// Non Empty List Testing
 const list = new LinkedList()
 
 list.append("dog")
@@ -136,14 +150,18 @@ list.prepend("bear")
 list.prepend("elephant")
 
 list.toString()
+console.log(list.at(3))
 
 console.log(list.getHead())
 console.log(list.getTail())
 console.log(list.getSize())
 
+
+// Empty List Testing
 const emptyList = new LinkedList()
 
 emptyList.toString()
+console.log(emptyList.at(4))
 console.log(emptyList.getHead())
 console.log(emptyList.getTail())
 console.log(emptyList.getSize())
