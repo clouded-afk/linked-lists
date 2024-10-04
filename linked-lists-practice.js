@@ -48,7 +48,7 @@ class LinkedList {
     // Returns the FIRST node in the list
     getHead() {
         if (!this.head) {
-            return "The List is Empty, There isnt a Head Node"
+            return null
         } else {
             return this.head
         }
@@ -57,7 +57,7 @@ class LinkedList {
     // Returns the LAST node in the list
     getTail() {
         if (!this.head) {
-            return "The List is Empty, There isnt a Tail Node"
+            return null
         }
         if (this.head.nextNode === null) {
             return this.head
@@ -72,9 +72,6 @@ class LinkedList {
 
     // Returns the node at the given index
     at(index) {
-        if (!this.head) {
-            return `The List is Empty, The Index of ${index} does not exist`
-        }
         let currentNode = this.head
         let count = 0
 
@@ -85,11 +82,23 @@ class LinkedList {
             currentNode = currentNode.nextNode
             count++
         }
+        return null
     }
 
     // Removes the last element from the list
     pop() {
-
+        if (!this.head) {
+            return null
+        } 
+        if (!this.head.nextNode) {
+            return this.head = null
+        }
+        let currentNode = this.head 
+        while (currentNode.nextNode.nextNode) {
+            currentNode = currentNode.nextNode
+        }
+        currentNode.nextNode = null
+        return this.head
     }
 
     // Returns TRUE of the passed in value is in the list, otherwise returns FALSE
@@ -138,8 +147,10 @@ class Node {
 }
 
 
-// Non Empty List Testing
+// N Elements List Testing
 const list = new LinkedList()
+
+console.log("----- N Elements List Testing -----")
 
 list.append("dog")
 list.append("cat")
@@ -156,9 +167,33 @@ console.log(list.getHead())
 console.log(list.getTail())
 console.log(list.getSize())
 
+list.pop()
+list.toString()
+
+// Single Element List
+const singleElementList = new LinkedList()
+
+console.log("")
+console.log("----- Single Element List Testing -----")
+
+singleElementList.append("Bob Barker")
+
+singleElementList.toString()
+console.log(singleElementList.at(6))
+
+console.log(singleElementList.getHead())
+console.log(singleElementList.getTail())
+console.log(singleElementList.getSize())
+
+singleElementList.pop()
+singleElementList.toString()
+
 
 // Empty List Testing
 const emptyList = new LinkedList()
+
+console.log("")
+console.log("----- Empty List Testing -----")
 
 emptyList.toString()
 console.log(emptyList.at(4))
