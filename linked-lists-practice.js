@@ -103,7 +103,19 @@ class LinkedList {
 
     // Returns TRUE of the passed in value is in the list, otherwise returns FALSE
     contains(value) {
+        if (!this.head) {
+            return false
+        }
 
+        let currentNode = this.head 
+
+        while (currentNode) {
+            if (currentNode.value === value) {
+                return true
+            }
+            currentNode = currentNode.nextNode
+        }
+        return false
     }
 
     // Returns the index of the node containing the passed in value, or null if not found
@@ -167,6 +179,9 @@ console.log(list.getHead())
 console.log(list.getTail())
 console.log(list.getSize())
 
+console.log(list.contains("panda"))
+console.log(list.contains("bird"))
+
 list.pop()
 list.toString()
 
@@ -185,6 +200,9 @@ console.log(singleElementList.getHead())
 console.log(singleElementList.getTail())
 console.log(singleElementList.getSize())
 
+console.log(singleElementList.contains("Bob Barker"))
+console.log(singleElementList.contains("Drew Carey"))
+
 singleElementList.pop()
 singleElementList.toString()
 
@@ -200,3 +218,4 @@ console.log(emptyList.at(4))
 console.log(emptyList.getHead())
 console.log(emptyList.getTail())
 console.log(emptyList.getSize())
+console.log(emptyList.contains("Star Wars"))
