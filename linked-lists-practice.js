@@ -120,7 +120,20 @@ class LinkedList {
 
     // Returns the index of the node containing the passed in value, or null if not found
     find(value) {
+        if (!this.head) {
+            return null
+        }
 
+        let currentNode = this.head
+        let count = 0
+        while (currentNode) {
+            if (currentNode.value == value) {    
+                return count
+            }
+            currentNode = currentNode.nextNode
+            count++
+        }
+        return null
     }
 
     // Prints out the linked list in a readable format in the console
@@ -182,6 +195,10 @@ console.log(list.getSize())
 console.log(list.contains("panda"))
 console.log(list.contains("bird"))
 
+console.log(list.find("cat"))
+console.log(list.find("bird"))
+
+
 list.pop()
 list.toString()
 
@@ -203,6 +220,9 @@ console.log(singleElementList.getSize())
 console.log(singleElementList.contains("Bob Barker"))
 console.log(singleElementList.contains("Drew Carey"))
 
+console.log(singleElementList.find("Bob Barker"))
+console.log(singleElementList.find("Drew Carey"))
+
 singleElementList.pop()
 singleElementList.toString()
 
@@ -219,3 +239,4 @@ console.log(emptyList.getHead())
 console.log(emptyList.getTail())
 console.log(emptyList.getSize())
 console.log(emptyList.contains("Star Wars"))
+console.log(emptyList.find("Batman"))
