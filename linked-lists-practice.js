@@ -47,11 +47,18 @@ class LinkedList {
 
     // Returns the FIRST node in the list
     getHead() {
-        return this.head
+        if (!this.head) {
+            return "The List is Empty, There isnt a Head Node"
+        } else {
+            return this.head
+        }
     }
 
     // Returns the LAST node in the list
     getTail() {
+        if (!this.head) {
+            return "The List is Empty, There isnt a Tail Node"
+        }
         if (this.head.nextNode === null) {
             return this.head
         } else {
@@ -133,3 +140,10 @@ list.toString()
 console.log(list.getHead())
 console.log(list.getTail())
 console.log(list.getSize())
+
+const emptyList = new LinkedList()
+
+emptyList.toString()
+console.log(emptyList.getHead())
+console.log(emptyList.getTail())
+console.log(emptyList.getSize())
