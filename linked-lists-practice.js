@@ -10,11 +10,11 @@ class LinkedList {
         if (this.head === null) {
             this.head = node
         } else {
-            let previous = this.head
-            while (previous.nextNode) {
-                previous = previous.nextNode
+            let previousNode = this.head
+            while (previousNode.nextNode) {
+                previousNode = previousNode.nextNode
             }
-            previous.nextNode = node
+            previousNode.nextNode = node
         }
     }
 
@@ -32,7 +32,17 @@ class LinkedList {
 
     // Returns TOTAL number of nodes in the list
     getSize() {
-
+        if (!this.head) {
+            return 0
+        } else {
+            let count = 0
+            let currentNode = this.head
+            while (currentNode) {
+                currentNode = currentNode.nextNode
+                count++
+            }
+            return count
+        }
     }
 
     // Returns the FIRST node in the list
@@ -45,11 +55,11 @@ class LinkedList {
         if (this.head.nextNode === null) {
             return this.head
         } else {
-            let previous = this.head
-            while (previous.nextNode !== null) {
-                previous = previous.nextNode
+            let currentNode = this.head
+            while (currentNode.nextNode !== null) {
+                currentNode = currentNode.nextNode
             }
-            return previous
+            return currentNode
         }
     }
 
@@ -73,7 +83,7 @@ class LinkedList {
 
     }
 
-    // Prints oyt the linked list in a readable format in the console
+    // Prints out the linked list in a readable format in the console
     toString() {
         if (this.head === null) {
             console.log("List is Empty")
@@ -119,5 +129,7 @@ list.prepend("bear")
 list.prepend("elephant")
 
 list.toString()
-console.log(list.getTail())
+
 console.log(list.getHead())
+console.log(list.getTail())
+console.log(list.getSize())
