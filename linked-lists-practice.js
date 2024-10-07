@@ -179,28 +179,24 @@ class LinkedList {
 
     // Removes the node at the given index
     removeAt(index) {
-        let temp = this.head
-        let previousNode = null
+        if (this.head === null) {
+            return null
+        }
 
-        if (temp === null) {
+        if (index === 0) {
+            return this.head = this.head.nextNode
+        }
+
+        let currentNode = this.head
+        for (let i = 0; i < index - 1; i++) {
+            currentNode = currentNode.nextNode
+        }
+
+        if (currentNode === null || currentNode.nextNode === null) {
             return this.head
         }
-        if (index === 1) {
-            this.head = temp.nextNode
-            return this.head
-        }
 
-        for (let i = 0; temp !== null && i < index; i++) {
-            previousNode = temp
-            temp = temp.nextNode
-        }
-
-        if (temp !== null) {
-            previousNode.nextNode = temp.nextNode
-        } else {
-            console.log("Data not found, index does not exist!")
-        }
-
+        currentNode.nextNode = currentNode.nextNode.nextNode
         return this.head
     }
 }
@@ -243,7 +239,7 @@ console.log(list.find("bird"))
 list.pop()
 list.toString()
 
-list.removeAt(2)
+list.removeAt(1)
 list.toString()
 
 list.insertAt("gopher", 1)
