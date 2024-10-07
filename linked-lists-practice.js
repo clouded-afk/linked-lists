@@ -239,10 +239,10 @@ console.log(list.find("bird"))
 list.pop()
 list.toString()
 
-list.removeAt(1)
+list.insertAt("gopher", 1)
 list.toString()
 
-list.insertAt("gopher", 1)
+list.removeAt(0)
 list.toString()
 
 // Single Element List
