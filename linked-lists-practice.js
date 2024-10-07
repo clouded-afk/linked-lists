@@ -155,30 +155,26 @@ class LinkedList {
 
     // Inserts a new node withe the provided value at the given index
     insertAt(value, index) {
-        if (index < 1) {
-            return this.head
-        }
-        if (index === 1 ) {
-            let newNode = new Node(value)
+        const newNode = new Node(value);
+        if (index === 0) {
             newNode.nextNode = this.head
-            return newNode
+            this.head = newNode
+            return
         }
 
         let currentNode = this.head
-        for (let i = 1; i < index && currentNode !== null; i++) {
+        for (let i = 0; i < index - 1; i++) {
+            if (currentNode === null) {
+                return
+            }
             currentNode = currentNode.nextNode
         }
 
-        if (currentNode == null) {
-            return this.head
+        if (currentNode === null) {
+            return
         }
-
-        let newNode = new Node(value)
-
         newNode.nextNode = currentNode.nextNode
         currentNode.nextNode = newNode
-
-        return this.head
     }
 
     // Removes the node at the given index
@@ -250,7 +246,7 @@ list.toString()
 list.removeAt(2)
 list.toString()
 
-list.insertAt("gopher", 3)
+list.insertAt("gopher", 1)
 list.toString()
 
 // Single Element List
