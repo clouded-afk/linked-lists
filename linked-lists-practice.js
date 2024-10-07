@@ -155,12 +155,34 @@ class LinkedList {
 
     // Inserts a new node withe the provided value at the given index
     insertAt(value, index) {
-
+        
     }
 
     // Removes the node at the given index
     removeAt(index) {
+        let temp = this.head
+        let previousNode = null
 
+        if (temp === null) {
+            return this.head
+        }
+        if (index === 1) {
+            this.head = temp.nextNode
+            return this.head
+        }
+
+        for (let i = 0; temp !== null && i < index; i++) {
+            previousNode = temp
+            temp = temp.nextNode
+        }
+
+        if (temp !== null) {
+            previousNode.nextNode = temp.nextNode
+        } else {
+            console.log("Data not found, index does not exist!")
+        }
+
+        return this.head
     }
 }
 
@@ -200,6 +222,9 @@ console.log(list.find("bird"))
 
 
 list.pop()
+list.toString()
+
+list.removeAt(2)
 list.toString()
 
 // Single Element List
